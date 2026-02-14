@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: real-time-poll-rooms
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: HASH_SECRET
+        generateValue: true
+    disk:
+      name: poll-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

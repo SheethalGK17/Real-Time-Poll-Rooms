@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Poll Rooms | Create</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page page-wide">
+      <section class="card card-grid">
+        <div class="stack">
+          <div>
+            <p class="eyebrow">Real-time Poll Builder</p>
+            <h1>Create a Poll</h1>
+            <p class="muted">
+              Build a single-choice poll, share the link, and watch votes update
+              live for everyone.
+            </p>
+          </div>
+
+          <div>
+            <p class="field-label">Quick templates</p>
+            <div id="templates" class="template-row"></div>
+          </div>
+
+          <form id="create-form" class="stack">
+            <label class="field">
+              <span class="row space-between">
+                <span>Question</span>
+                <span id="question-count" class="char-counter">0/200</span>
+              </span>
+              <input
+                id="question"
+                name="question"
+                type="text"
+                maxlength="200"
+                placeholder="What feature should we build next?"
+                required
+              />
+            </label>
+
+            <div class="stack-sm">
+              <div class="row space-between">
+                <label class="field-label">Options</label>
+                <div class="row">
+                  <span id="options-ready" class="chip chip-muted">0 ready</span>
+                  <button id="add-option" type="button" class="btn btn-light">
+                    Add option
+                  </button>
+                </div>
+              </div>
+              <div id="options" class="stack"></div>
+              <p id="validation-hint" class="muted small">
+                Add at least 2 unique options.
+              </p>
+            </div>
+
+            <button id="create-button" type="submit" class="btn btn-primary">
+              Create Poll
+            </button>
+            <p id="form-error" class="error hidden"></p>
+          </form>
+
+          <div id="success" class="success hidden">
+            <p class="success-title">Poll created.</p>
+            <a id="share-link" href="#" target="_blank" rel="noopener"></a>
+            <div class="row">
+              <button id="copy-link" class="btn btn-light" type="button">
+                Copy link
+              </button>
+              <button id="open-link" class="btn btn-primary" type="button">
+                Open poll
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="preview-panel">
+          <h2>Live Preview</h2>
+          <p id="preview-question" class="preview-question">
+            Your question will appear here.
+          </p>
+          <ul id="preview-options" class="preview-list"></ul>
+          <p id="preview-footnote" class="muted small">0 options ready</p>
+          <p class="muted small">
+            Votes are single-choice. Results stream live to connected viewers.
+          </p>
+        </aside>
+      </section>
+      <section class="card card-note">
+        <p class="small muted">
+          Fairness controls are active by default: one vote per voter token and
+          one vote per fingerprint (IP + user agent), plus vote-attempt rate
+          limiting.
+        </p>
+      </section>
+    </main>
+
+    <template id="option-template">
+      <div class="option-editor">
+        <div class="option-input-shell">
+          <input type="text" maxlength="100" placeholder="Option text" required />
+          <span class="char-counter">0/100</span>
+        </div>
+        <div class="row row-tight option-controls">
+          <button type="button" class="btn btn-light btn-icon" data-action="up">
+            Up
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-icon"
+            data-action="down"
+          >
+            Down
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-danger"
+            data-action="remove"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <script src="/create.js"></script>
+  </body>
+</html>

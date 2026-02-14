@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Poll Rooms | Poll</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page page-wide">
+      <section class="card card-grid">
+        <div class="stack">
+          <div class="row space-between">
+            <p class="eyebrow">Live Poll Room</p>
+            <span id="connection" class="chip chip-muted">Connecting...</span>
+          </div>
+
+          <h1 id="poll-question">Loading poll...</h1>
+          <p id="poll-meta" class="muted"></p>
+
+          <div class="stat-grid">
+            <div class="stat-card">
+              <p class="stat-label">Total Votes</p>
+              <p id="stat-votes" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-label">Live Viewers</p>
+              <p id="stat-viewers" class="stat-value">-</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-label">Sort</p>
+              <button id="sort-toggle" class="btn btn-light" type="button">
+                Top results
+              </button>
+            </div>
+          </div>
+
+          <p id="status" class="status hidden"></p>
+          <p id="poll-error" class="error hidden"></p>
+          <div id="options" class="stack"></div>
+
+          <div class="row space-between top-gap">
+            <a href="/" class="btn btn-light">Create another poll</a>
+            <span id="viewer-chip" class="chip chip-muted">0 viewers</span>
+          </div>
+        </div>
+
+        <aside class="activity-panel">
+          <h2>Live Activity</h2>
+          <ul id="activity-feed" class="activity-feed"></ul>
+          <p class="muted small">
+            Activity is anonymous and updates in real time.
+          </p>
+        </aside>
+      </section>
+
+      <section class="card card-note">
+        <p class="small muted">
+          Fairness controls are active for this poll. You can vote once.
+        </p>
+      </section>
+    </main>
+
+    <template id="activity-item-template">
+      <li class="activity-item">
+        <span class="activity-text"></span>
+        <span class="activity-time"></span>
+      </li>
+    </template>
+
+    <template id="option-card-template">
+      <article class="option-card">
+        <div class="option-head">
+          <button class="btn btn-light vote-button" type="button"></button>
+          <span class="option-result"></span>
+        </div>
+        <div class="bar">
+          <div class="bar-fill"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/poll.js"></script>
+  </body>
+</html>
