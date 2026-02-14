@@ -108,5 +108,5 @@ Optional:
 ## Submission Fields Template
 
 - Public URL: `<add deployed URL here>`
-- Repository URL: `<add GitHub repo URL here>`
+- Repository URL: `https://github.com/SheethalGK17/Real-Time-Poll-Rooms.git`
 - Notes: this README already includes fairness controls, edge cases, and known limitations.
